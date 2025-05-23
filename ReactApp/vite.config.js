@@ -6,10 +6,9 @@ export default defineConfig({
   plugins: [preact()],
    server: {
     host: true,
-    port: 3000,
-    allowedHosts: 'all', 
-    allowedHosts: ['.ngrok-free.app'],
-    open: true,  
+  port: 3000,
+  allowedHosts: ['.ngrok-free.app', 'localhost', '127.0.0.1'],
+  open: true, 
   },
    build: {
     rollupOptions: {
