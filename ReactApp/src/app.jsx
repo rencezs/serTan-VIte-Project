@@ -1,4 +1,5 @@
-import Notif from './ReacFirstPage.jsx';
+import { Notif } from './ReacFirstPage.jsx';
+
 
 function App() {
   return(
