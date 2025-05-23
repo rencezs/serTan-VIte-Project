@@ -1,0 +1,130 @@
+@import "normalize.css";
+
+
+
+
+
+
+
+
+/* underline seemore */
+.list .item .seeMore {
+    text-decoration: underline;
+}
+
+.list.showDetail .item.active .seeMore {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.list {
+  position: relative;
+  height: 600px;
+}
+.list .item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+.list .item img {
+  width: 70%;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  left: 15%;
+
+  /* keep image pinned to top */
+ /* transition: right 0.6s ease; */
+
+  transition: left 0.6s ease, top 0.6s ease, width 0.6s ease;
+}
+
+.list .item .title {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  left: 0%;
+}
+
+.list .item .price {
+  position: absolute;
+  right: 0;
+  top: 60%;
+  left: -3%;
+}
+
+.list .item button {
+  position: absolute;
+  right: 0;
+  top: 70%;
+  left: 0%;
+  align-items: center;
+  margin-left: 125px;
+  width: 400px;
+  margin-right: 125px;
+}
+
+.list .item .seeMore {
+  position: absolute;
+  right: 0;
+  top: 80%;
+  left: 0%;
+}
+
+.list .item .backToAll {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* modifying inside of seeMore list items */
+.list.showDetail .item.active,
+.list.showDetail .item.active img {
+    transition: 1.5s linear;
+}
+
+.list.showDetail .item.active img{
+    position: absolute;
+    left: -2%;
+    top: 18%;
+    width: 400px;
+
+}
+
+.list.showDetail .item.active .title {
+  position: absolute;
+  left: -66%;
+  top: 45%;
+}
+
+.list.showDetail .item.active .price {
+  position: absolute;
+  left: -67%;
+  top: 50%;
+}
+
+.list.showDetail .item.active button {
+  position: absolute;
+  left: -5%;
+  top: 60%;
+  width: 200px;
+}
+
+/* item height 600px witdh 1000px */
+
+.list.showDetail .item.active .details {
+  position: absolute;
+  left: 40%;
+  height: 600px;
+  width: 600px;
+  border: 1px solid black;
+}
+
+
+/* For browser size */
