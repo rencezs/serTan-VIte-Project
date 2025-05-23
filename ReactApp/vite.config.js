@@ -3,11 +3,12 @@ import preact from '@preact/preset-vite'
 import { resolve } from 'path' 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/setTan-Vite-ProjectTP/",
   plugins: [preact()],
    server: {
-    host: true,
+     host: true,
   port: 3000,
-  allowedHosts: ['.ngrok-free.app', 'localhost', '127.0.0.1'],
+  allowedHosts: 'all',
   open: true, 
   },
    build: {

@@ -6,16 +6,23 @@ function Notif  (props) {
 
     return(
         <>
-    <div>
+    <div>{`
         
         
         
-        </div>    
+          
         
-        
-        
-        
-        
+      package.json  
+        /* "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+         }*/
+     
+    
+
+    
+    `}</div>  
         </>
     );
 
