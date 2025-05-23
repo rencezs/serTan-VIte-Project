@@ -3,7 +3,7 @@ import preact from '@preact/preset-vite'
 import { resolve } from 'path' 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/setTan-Vite-ProjectTP/",
+ /* base: "/setTan-Vite-ProjectTP/",*/
   plugins: [preact()],
    server: {
      host: true,
