@@ -139,7 +139,10 @@
         { id: 10, name: 'PRODUCT NAME 10', image: 'group10.png', price: 200 }
       ];
 
-     
+      products1 = [
+        {id:1 , name:'PRODUCT NAME 1' , image:'group1-removebg-preview.png' }
+
+      ];
 
       let listCards = JSON.parse(localStorage.getItem('cartItems')) || [];
 
