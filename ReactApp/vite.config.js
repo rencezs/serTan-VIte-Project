@@ -16,6 +16,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         second: resolve(__dirname, 'SecondPage.html'),
+        third: resolve(__dirname, 'ContactAllOf.html'),
       }
     }
   }

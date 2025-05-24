@@ -1,11 +1,11 @@
-import { Notif } from './ReacFirstPage.jsx';
+import { SizeSelector } from './ReacFirstPage.jsx';
 
 
 function App() {
   return(
     <>
     
-    
+    <SizeSelector></SizeSelector>
     
     
     

@@ -139,16 +139,146 @@
         { id: 10, name: 'PRODUCT NAME 10', image: 'group10.png', price: 200 }
       ];
 
-      products1 = [
-        {id:1 , name:'PRODUCT NAME 1' , image:'group1-removebg-preview.png' }
+      const productsInsideSeeMore = [ {
+        id: 1,
+        name: 'PRODUCT NAME 1',
+        variants_Image: [ 'group1-removebg-preview.png', 'grouped1-removebg-preview.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+         ],
+            },
+      {
+        id:2,
+        name: 'PRODUCT NAME 2',
+        variants_Image: [ 'group2-removebg-preview.png','grouped2-removebg-preview.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'     
+         ],
+      } ,
+      {
+        id:3,
+        name: "PRODUCT NAME 3",
+        variants_Image: [ 'group3-removebg-preview.png', "grouped3-removebg-preview.png",
+          'Normalsize.png.png',
+          'Oversized.png.png'  
+        ]
+      },
+      {
+        id: 4,
+        name: 'PRODUCT NAME 4',
+        variants_Image: [  'grouped4BLACK-removebg-preview.png',
+          'grouped4WHITE-removebg-preview.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id:5,
+        name: 'PRODUCT NAME 5',
+        variants_Image: [
+          'group5-removebg-preview.png',
+          'grouped5-removebg-preview.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id: 6,
+        name: 'PRODUCT NAME 6',
+        variants_Image: [
+          'group6-removebg-preview.png',
+          'grouped6-removebg-preview.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id: 7,
+        name: 'PRODUCT NAME 7',
+        variants_Image: [
+          'group7.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id: 8,
+        name: 'PRODUCT NAME 8',
+        variants_Image: [
+          'group8.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id: 9,
+        name: 'PRODUCT NAME 9',
+        variants_Image: [
+          'group9.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      },
+      {
+        id: 10,
+        name: 'PRODUCT NAME 10',
+        variants_Image: [
+          'group10.png',
+          'Normalsize.png.png',
+          'Oversized.png.png'
+        ]
+      }
+      
+    
+    ];
 
-      ];
+
+    function showNotification(item, qty) {
+    const notif = document.createElement('div');
+    notif.className = 'cart-notif';
+    notif.innerHTML = `
+      <img src="/${item.image}" alt="${item.name}" class="notif-img" />
+      <div class="notif-info">
+        <p class="notif-name">${item.name}</p>
+        <p class="notif-price">${item.price.toLocaleString()}</p>
+        <p class="notif-qty">Quantity: ${qty}</p>
+      </div>
+    `;
+    document.body.appendChild(notif);
+    // Remove after 3 seconds
+    setTimeout(() => {
+      notif.classList.add('fade');
+      notif.addEventListener('transitionend', () => notif.remove());
+    }, 3000);
+  }
+
+  function addtoCard(key) {
+    const prod = products[key];
+    if (!listCards[key]) {
+      listCards[key] = { ...prod, quantity: 1 };
+    } else {
+      listCards[key].quantity++;
+    }
+    reloadCard();
+    saveCart();
+    showNotification(products[key], listCards[key].quantity);
+  }
+
+
 
       let listCards = JSON.parse(localStorage.getItem('cartItems')) || [];
 
       function initApp() {
         list.innerHTML = '';
-        products.forEach((product, key) => {
+        products.forEach((product, key) => {    
+
+          const info = productsInsideSeeMore.find(p => p.id === product.id) || {};
+
+          const variants = info.variants_Image  || [];  
+          let detailIndex = 0;
+
+        
+
           const newDiv = document.createElement('div');
           newDiv.classList.add('item');
           newDiv.innerHTML = `
@@ -158,13 +288,97 @@
             <button title="Add To Cart" onclick="addtoCard(${key})">Add To Cart</button>
             <p class="seeMore">See More</p>
             
-            
-            <div class="details">  
-              
+
+       
+
+
+         <div class="details">
+          <div class="Container-details">
+             
+            <button class="prev-detail">Prev</button>
+
+            <img  class="detail-img" src="/${variants[0]}" 
+              alt="Detail of ${product.name}" />
+
+            <button class="next-detail">Next</button>
+
+
+            <p class="SelectSize"> <b> Select your size:  </b> </p>
+           
+
+
+
+            <label class="Small">
+            <input  type="Radio" name="size" value="Small"> </input>
+            <b> Small </b>
+            </label>
+            <label class="Medium">
+            <input  type="Radio" name="size" value="Medium"> </input>
+            <b> Medium </b>
+            </label>
+            <label class="Large">
+            <input  type="Radio" name="size" value="Large"> </input>
+            <b> Large </b>
+            </label>
+            <label class="XL">
+            <input  type="Radio" name="size" value="XL"> </input>
+            <b> XL </b>
+            </label>
+            <label class="XXL">
+            <input  type="Radio" name="size" value="XXL"> </input>
+            <b> XXL </b>
+            </label>
+
+           
+
             </div>
 
+          </div>
+          
           `;
+
+          if (product.id === 4) {
+  const container = newDiv.querySelector('.Container-details');
+  container.insertAdjacentHTML('beforeend', `
+    <p class="SelectWhiteOrBlack"><strong>Select Color:</strong></p>
+    <label class="White"><input type="radio" name="color-${key}" value="White"> White</label>
+    <label class="Black"><input type="radio" name="color-${key}" value="Black"> Black</label>
+  `);
+  const colorLabel = document.createElement('p');
+  colorLabel.className = 'SelectedColor';
+  container.append(colorLabel);
+  container.querySelectorAll(`input[name="color-${key}"]`).forEach(radio => {
+    radio.addEventListener('change', () => {
+      colorLabel.textContent = ` ${radio.value}`;
+    });
+  });
+}
+
+
           list.appendChild(newDiv);
+
+
+          // Select Size print
+          const sizeLabel = newDiv.querySelector('.SelectSize');
+          newDiv.querySelectorAll('input[name="size"]').forEach(radio => {
+           radio.addEventListener('change', () => {
+          sizeLabel.textContent = `Select your size: ${radio.value}`;
+  });
+});
+
+
+          // 4) Wire up  Prev/Next On SeeMore Details
+          const imgEl = newDiv.querySelector('.detail-img');
+          newDiv.querySelector('.prev-detail').addEventListener('click', () => {
+           if (variants.length === 0) return;
+          detailIndex = (detailIndex - 1 + variants.length) % variants.length;
+          imgEl.src = '/' + variants[detailIndex];
+          });
+           newDiv.querySelector('.next-detail').addEventListener('click', () => {
+          if (variants.length === 0) return;
+         detailIndex = (detailIndex + 1) % variants.length;
+        imgEl.src = '/' + variants[detailIndex];
+            });
         });
       }
 
@@ -261,6 +475,8 @@ function slide(dir) {
         if (!listCards[key]) listCards[key] = { ...products[key], quantity: 1 };
         else listCards[key].quantity++;
         reloadCard(); saveCart();
+       //AI
+        showNotification(products[key], listCards[key].quantity);
       }
       function changeQuantity(key, newQty) {
         if (newQty <= 0) delete listCards[key];
