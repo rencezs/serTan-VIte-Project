@@ -1,4 +1,4 @@
-import { SizeSelector } from './ReacFirstPage.jsx';
+
 
 
 function App() {
